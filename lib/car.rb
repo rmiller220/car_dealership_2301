@@ -1,9 +1,12 @@
 class Car
-  attr_reader :make_model, :payment, :loan_length
-  attr_accessor :color
-  def initialize(make_model, payment, loan_length)
+  attr_reader :make_model, :monthly_payment, :loan_length, :color #, :make, :model
+  
+  def initialize(make_model, monthly_payment, loan_length)
     @make_model = make_model
-    @payment = payment
+    # @make = make_model.split(' ').first
+    # @model = make_model.split(' ').last
+    #^^^^ another way to define make and model, need to add to attr_reader as well
+    @monthly_payment = monthly_payment
     @loan_length = loan_length
     @color = nil
   end
@@ -16,12 +19,10 @@ class Car
     @make_model.split[1]
   end
 
-  def monthly_payment
-    @payment
-  end
   def total_cost
-    @payment*@loan_length
+    @monthly_payment*@loan_length
   end
+
   def paint!(color)
     @color = color
   end
